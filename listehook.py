@@ -6,19 +6,19 @@ import os,sys
 import threading
 from threading import Thread
 import random
-import gc
 from random import randint
 from time import sleep
 site = "http://" # buraya gezilecek siteyi giriniz
 kelime = "kelime" #girilecek siteden bir kelime giriniz. dogru site olup olmadığı bu kelime ile kontrol edilecektir.
 sayi = 10 #aynı anda kaç kişi siteye girsin. fazla sayıda işlem fazla cpu ve ram demektir. 
+pencere_acilsin_mi = "False" #chrome penceresinin açılıp açılmayacağına karar verir. default değeri false görünmesini istiyorsanız True yazınız.
 def main():
 	while True:
+		web = Browser(showWindow = pencere_acilsin_mi)
 		try:
 			m1 = random.randint(20,500)
 			m2 = random.randint(-200,700)
 			m3 = random.randint(40,900)
-			web = Browser(showWindow = False)
 			web.set_page_load_timeout(60)
 			web.go_to(site)
 			if web.exists(kelime):
