@@ -9,6 +9,9 @@ import random
 import gc
 from random import randint
 from time import sleep
+site = "http://" # buraya gezilecek siteyi giriniz
+kelime = "kelime" #girilecek siteden bir kelime giriniz. dogru site olup olmadığı bu kelime ile kontrol edilecektir.
+sayi = 10 #aynı anda kaç kişi siteye girsin. fazla sayıda işlem fazla cpu ve ram demektir. 
 def main():
 	while True:
 		try:
@@ -17,8 +20,8 @@ def main():
 			m3 = random.randint(40,900)
 			web = Browser(showWindow = False)
 			web.set_page_load_timeout(60)
-			web.go_to('http://')
-			if web.exists("kelim"):
+			web.go_to(site)
+			if web.exists(kelime):
 				sleep(random.randint(20,50))
 				print("anasayfa")
 				web.scrolly(m1) 
@@ -150,6 +153,6 @@ def main():
 		except:
 			web.quit()
 if __name__ == '__main__':
-    for t in range(40):
+    for t in range(sayi):
         t = threading.Thread(target=main)
         t.start()		
