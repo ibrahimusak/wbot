@@ -18,7 +18,7 @@ def main():
 			web = Browser(showWindow = False)
 			web.set_page_load_timeout(60)
 			web.go_to('http://')
-			if web.exists("etiler"):
+			if web.exists("kelim"):
 				sleep(random.randint(20,50))
 				print("anasayfa")
 				web.scrolly(m1) 
